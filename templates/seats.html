@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Seat Availability</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-5 text-center">
+    <h2>{{ event_name }}</h2>
+    <div id="seatGrid" class="mt-4 d-flex flex-wrap justify-content-center gap-2">
+        {% for seat in seats %}
+        <button class="btn {% if seat.is_available %}btn-success{% else %}btn-danger{% endif %}" disabled>
+            {{ seat.seat_number }}
+        </button>
+        {% endfor %}
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
